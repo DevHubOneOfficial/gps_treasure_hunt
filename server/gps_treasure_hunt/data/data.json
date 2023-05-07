@@ -3,18 +3,18 @@
     "dateFrom": "2023-05-01",
     "dateTo": "2023-05-10",
     "coordinates": {
-      "longitude": 12.345,
-      "latitude": 67.89
+      "latitude": 42.811109947000965,
+      "longitude": 23.20290561263463
     },
     "objectName": "Object 1",
     "description": "Description 1"
   },
   {
-    "dateFrom": "2023-05-11",
-    "dateTo": "2023-05-20",
+    "dateFrom": "2023-05-10",
+    "dateTo": "2023-05-15",
     "coordinates": {
-      "longitude": 98.765,
-      "latitude": 43.21
+      "latitude": 42.81058107454911,
+      "longitude": 23.195692448858654
     },
     "objectName": "Object 2",
     "description": "Description 2"
