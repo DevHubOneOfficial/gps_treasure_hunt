@@ -1,16 +1,16 @@
 [
   {
-    "dateFrom": "2023-05-01",
-    "dateTo": "2023-05-10",
+    "dateFrom": "2023-05-08",
+    "dateTo": "2023-05-12",
     "coordinates": {
-      "latitude": 42.811109947000965,
-      "longitude": 23.20290561263463
+      "latitude": 42.6295435708044,
+      "longitude": 23.38270931018321
     },
     "objectName": "Object 1",
     "description": "Description 1"
   },
   {
-    "dateFrom": "2023-05-10",
+    "dateFrom": "2023-05-12",
     "dateTo": "2023-05-15",
     "coordinates": {
       "latitude": 42.81058107454911,
