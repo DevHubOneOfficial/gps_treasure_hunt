@@ -51,6 +51,7 @@ export class AppController {
             // Read the image file
             const imageStream = createReadStream(join(imageFolder, imagePath));
             const imageBase64 = await this.streamToBase64(imageStream);
+            console.log(imageBase64);
 
             // Return the image as part of the JSON response
             return { coordinates, objectName, image: imageBase64 };
