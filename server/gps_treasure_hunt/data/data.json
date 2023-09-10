@@ -7,16 +7,16 @@
       "longitude": 23.38270931018321
     },
     "objectName": "Object 1",
-    "description": "Description 1"
+    "imagePath": "images/1.jpg"
   },
   {
-    "dateFrom": "2023-05-12",
-    "dateTo": "2023-05-15",
+    "dateFrom": "2023-09-09",
+    "dateTo": "2023-09-15",
     "coordinates": {
       "latitude": 42.81058107454911,
       "longitude": 23.195692448858654
     },
     "objectName": "Object 2",
-    "description": "Description 2"
+    "imagePath": "images/2.jpg"
   }
 ]
