@@ -5,6 +5,7 @@ import { createReadStream } from 'fs';
 import { join } from 'path';
 
 const data = require('../data/data.json');
+const imageFolder = join(__dirname, '..', 'data');
 
 
 @Controller()
@@ -48,7 +49,7 @@ export class AppController {
             const { coordinates, objectName, imagePath } = currentObject;
 
             // Read the image file
-            const imageStream = createReadStream(join(__dirname, '..', 'data', imagePath));
+            const imageStream = createReadStream(join(imageFolder, imagePath));
             const imageBase64 = await this.streamToBase64(imageStream);
 
             // Return the image as part of the JSON response
