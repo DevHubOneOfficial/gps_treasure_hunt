@@ -31,6 +31,7 @@ export class AppController {
         if (!bcrypt.compareSync(accessToken, this.accessTokenHash)) {
             throw new UnauthorizedException('Invalid access token');
         }
+        console.log("I am here");
 
         const currentDate = new Date();
         let currentObject = null;
@@ -50,6 +51,8 @@ export class AppController {
 
             // Read the image file
             const imageStream = createReadStream(join(imageFolder, imagePath));
+            // debug
+            console.log(imageStream);
             const imageBase64 = await this.streamToBase64(imageStream);
             console.log(imageBase64);
 
