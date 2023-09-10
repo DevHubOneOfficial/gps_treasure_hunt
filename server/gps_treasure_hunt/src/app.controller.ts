@@ -22,6 +22,7 @@ export class AppController {
 
     @Get('coordinates')
     @Header('Cache-Control', 'none')
+    @Header('Content-Type', 'application/json')
     async getJson(@Query('accessToken') accessToken: string) {
         // Validate the access token
         if (!accessToken) {
