@@ -5,7 +5,7 @@ import { createReadStream } from 'fs';
 import { join } from 'path';
 
 const data = require('../data/data.json');
-const imageFolder = join(__dirname, '..', 'data');
+const imageFolder = join(__dirname, '..');
 
 
 @Controller()
