@@ -5,7 +5,7 @@ import { createReadStream } from 'fs';
 import { join } from 'path';
 
 const data = require('../data/data.json');
-const imageFolder = join(__dirname, '..');
+const imageFolder = join(__dirname, '..', 'data');
 
 
 @Controller()
@@ -58,7 +58,8 @@ export class AppController {
             console.log(imageBase64);
 
             // Return the image as part of the JSON response
-            return { coordinates, objectName, image: imageBase64 };
+            const description = "This is a description";
+            return { coordinates, objectName, image: imageBase64, description };
         } else {
             return { message: "No object found for the current date." };
         }
