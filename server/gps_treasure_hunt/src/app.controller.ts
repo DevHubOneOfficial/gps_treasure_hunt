@@ -14,7 +14,7 @@ export class AppController {
 
     constructor(private readonly appService: AppService) {
         const saltRounds = 10;
-        const accessToken = 'mysecretaccesstoken';
+        const accessToken = 'devhubonesecrettokennobodyknows';
 
         // Generate a hash of the access token
         this.accessTokenHash = bcrypt.hashSync(accessToken, saltRounds);
