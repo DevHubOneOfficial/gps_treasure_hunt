@@ -1,7 +1,7 @@
 [
   {
-    "dateFrom": "2024-05-15T08:40:00",
-    "dateTo": "2024-05-15T08:45:00",
+    "dateFrom": "2024-05-15T11:20:00",
+    "dateTo": "2024-05-15T11:25:00",
     "coordinates": {
       "latitude": 42.62956560201733,
       "longitude": 23.38304401961856
@@ -10,8 +10,8 @@
     "imagePath": "images/gatanka1.png"
   },
   {
-    "dateFrom": "2024-05-15T08:45:00",
-    "dateTo": "2024-05-15T08:50:00",
+    "dateFrom": "2024-05-15T11:25:00",
+    "dateTo": "2024-05-15T11:30:00",
     "coordinates": {
       "latitude": 42.62956560201733,
       "longitude": 23.38304401961856
@@ -20,8 +20,8 @@
     "imagePath": "images/gatanka2.png"
   },
   {
-    "dateFrom": "2024-05-15T08:50:00",
-    "dateTo": "2024-05-15T08:55:00",
+    "dateFrom": "2024-05-15T11:30:00",
+    "dateTo": "2024-05-15T11:35:00",
     "coordinates": {
       "latitude": 42.62956560201733,
       "longitude": 23.38304401961856
@@ -30,8 +30,8 @@
     "imagePath": "images/gatanka3.png"
   },
   {
-    "dateFrom": "2024-05-15T08:55:00",
-    "dateTo": "2024-05-15T09:00:00",
+    "dateFrom": "2024-05-15T11:35:00",
+    "dateTo": "2024-05-15T11:40:00",
     "coordinates": {
       "latitude": 42.62956560201733,
       "longitude": 23.38304401961856
