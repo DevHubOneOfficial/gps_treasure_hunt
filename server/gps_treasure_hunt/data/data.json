@@ -1,40 +1,40 @@
 [
   {
-    "dateFrom": "2023-11-17",
-    "dateTo": "2023-11-23",
+    "dateFrom": "2024-05-15T08:20:00",
+    "dateTo": "2024-05-15T08:25:00",
     "coordinates": {
-      "latitude": 42.81865739127727,
-      "longitude": 23.224382996182538
+      "latitude": 42.62956560201733,
+      "longitude": 23.38304401961856
     },
     "objectName": "Fortress",
     "imagePath": "images/gatanka1.png"
   },
   {
-    "dateFrom": "2023-11-24",
-    "dateTo": "2023-11-30",
+    "dateFrom": "2024-05-15T08:25:00",
+    "dateTo": "2024-05-15T08:30:00",
     "coordinates": {
-      "latitude": 42.811983777420245,
-      "longitude": 23.215159942195122
+      "latitude": 42.62956560201733,
+      "longitude": 23.38304401961856
     },
     "objectName": "Roster",
     "imagePath": "images/gatanka2.png"
   },
   {
-    "dateFrom": "2023-12-01",
-    "dateTo": "2023-12-07",
+    "dateFrom": "2024-05-15T08:30:00",
+    "dateTo": "2024-05-15T08:35:00",
     "coordinates": {
-      "latitude": 42.82568946188311,
-      "longitude": 23.181503924253526
+      "latitude": 42.62956560201733,
+      "longitude": 23.38304401961856
     },
     "objectName": "Sun",
     "imagePath": "images/gatanka3.png"
   },
   {
-    "dateFrom": "2023-12-08",
-    "dateTo": "2023-12-14",
+    "dateFrom": "2024-05-15T08:35:00",
+    "dateTo": "2024-05-15T08:40:00",
     "coordinates": {
-      "latitude": 42.81059160577914,
-      "longitude": 23.202826461492958
+      "latitude": 42.62956560201733,
+      "longitude": 23.38304401961856
     },
     "objectName": "Key",
     "imagePath": "images/gatanka4.png"

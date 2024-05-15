@@ -1,0 +1,10 @@
+services:
+  kostinbrod-hunt:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+        - "3040:3000"
+    restart: always
+    volumes:
+      - ./src:/usr/src/app/src

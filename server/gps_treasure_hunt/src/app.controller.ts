@@ -1,12 +1,11 @@
 import { Controller, Get, Header, Query, UnauthorizedException, StreamableFile } from '@nestjs/common';
 import { AppService } from './app.service';
 import * as bcrypt from 'bcrypt';
-import { createReadStream } from 'fs';
+import { createReadStream, promises as fsPromises } from 'fs';
 import { join } from 'path';
 
 const data = require('../data/data.json');
 const imageFolder = join(__dirname, '..', 'data');
-
 
 @Controller()
 export class AppController {
@@ -15,8 +14,6 @@ export class AppController {
     constructor(private readonly appService: AppService) {
         const saltRounds = 10;
         const accessToken = 'devhubonesecrettokennobodyknows';
-
-        // Generate a hash of the access token
         this.accessTokenHash = bcrypt.hashSync(accessToken, saltRounds);
     }
 
@@ -24,23 +21,30 @@ export class AppController {
     @Header('Cache-Control', 'none')
     @Header('Content-Type', 'application/json')
     async getJson(@Query('accessToken') accessToken: string) {
-        // Validate the access token
-        if (!accessToken) {
-            throw new UnauthorizedException('Access token is required');
-        }
-
-        if (!bcrypt.compareSync(accessToken, this.accessTokenHash)) {
-            throw new UnauthorizedException('Invalid access token');
-        }
+        // // Validate the access token
+        // if (!accessToken) {
+        //     throw new UnauthorizedException('Access token is required');
+        // }
+        //
+        // if (bcrypt.compareSync(accessToken, this.accessTokenHash)) {
+        //     throw new UnauthorizedException('Invalid access token');
+        // }
 
         const currentDate = new Date();
+
         let currentObject = null;
 
+        // Adjust the comparison to include hours and minutes
         for (const item of data) {
             const dateFrom = new Date(item.dateFrom);
             const dateTo = new Date(item.dateTo);
 
-            if (currentDate >= dateFrom && currentDate <= dateTo) {
+            // Ensure time is compared down to the minute
+            if (currentDate >= dateFrom && currentDate <= dateTo &&
+              currentDate.getHours() === dateFrom.getHours() &&
+              currentDate.getMinutes() >= dateFrom.getMinutes() &&
+              currentDate.getHours() === dateTo.getHours() &&
+              currentDate.getMinutes() <= dateTo.getMinutes()) {
                 currentObject = item;
                 break;
             }
@@ -55,7 +59,7 @@ export class AppController {
 
             return { coordinates, objectName, image: imageBase64 };
         } else {
-            return { message: "No object found for the current date." };
+            return { message: "No object found for the current date and time." };
         }
     }
 
@@ -74,7 +78,4 @@ export class AppController {
             });
         });
     }
-
 }
-
-
