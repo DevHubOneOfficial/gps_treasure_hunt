@@ -43,12 +43,16 @@ export class AppController {
 
             console.log("Interval: " + dateFrom + " - " + dateTo);
 
-            // Ensure time is compared down to the minute
-            if (currentDate >= dateFrom && currentDate <= dateTo &&
-              currentDate.getHours() === dateFrom.getHours() &&
-              currentDate.getMinutes() >= dateFrom.getMinutes() &&
-              currentDate.getHours() === dateTo.getHours() &&
-              currentDate.getMinutes() <= dateTo.getMinutes()) {
+            const isWithinInterval = (currentDate, dateFrom, dateTo) => {
+                const currentMinutes = currentDate.getHours() * 60 + currentDate.getMinutes();
+                const fromMinutes = dateFrom.getHours() * 60 + dateFrom.getMinutes();
+                const toMinutes = dateTo.getHours() * 60 + dateTo.getMinutes();
+
+                return currentDate >= dateFrom && currentDate <= dateTo &&
+                  currentMinutes >= fromMinutes && currentMinutes <= toMinutes;
+            };
+
+            if (isWithinInterval(currentDate, dateFrom, dateTo)) {
                 currentObject = item;
                 break;
             }
