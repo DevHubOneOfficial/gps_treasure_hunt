@@ -32,12 +32,16 @@ export class AppController {
 
         const currentDate = new Date();
 
+         console.log(currentDate);
+
         let currentObject = null;
 
         // Adjust the comparison to include hours and minutes
         for (const item of data) {
             const dateFrom = new Date(item.dateFrom);
             const dateTo = new Date(item.dateTo);
+
+            console.log("Interval: " + dateFrom + " - " + dateTo);
 
             // Ensure time is compared down to the minute
             if (currentDate >= dateFrom && currentDate <= dateTo &&
