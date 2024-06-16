@@ -11,7 +11,7 @@
   },
   {
     "dateFrom": "2024-06-08T14:30:00",
-    "dateTo": "2024-06-15T14:30:00",
+    "dateTo": "2024-06-17T07:00:00",
     "coordinates": {
       "latitude": 42.81198429571889,
       "longitude": 23.21515681446394
@@ -20,8 +20,8 @@
     "imagePath": "images/gatanka2.png"
   },
   {
-    "dateFrom": "2024-06-15T14:30:00",
-    "dateTo": "2024-06-22T14:30:00",
+    "dateFrom": "2024-06-17T07:00:00",
+    "dateTo": "2024-06-24T07:00:00",
     "coordinates": {
       "latitude": 42.82567522833808,
       "longitude": 23.18149900438928
@@ -30,8 +30,8 @@
     "imagePath": "images/gatanka3.png"
   },
   {
-    "dateFrom": "2024-06-22T14:30:00",
-    "dateTo": "2024-06-31T14:30:00",
+    "dateFrom": "2024-06-24T07:00:00",
+    "dateTo": "2024-07-01T07:00:00",
     "coordinates": {
       "latitude": 42.81109600789831,
       "longitude": 23.203037858505944
