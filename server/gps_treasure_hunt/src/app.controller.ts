@@ -1,10 +1,11 @@
-import { Controller, Get, Header, Query, UnauthorizedException, StreamableFile } from '@nestjs/common';
+import { Controller, Get, Header, Query, UnauthorizedException } from '@nestjs/common';
 import { AppService } from './app.service';
 import * as bcrypt from 'bcrypt';
-import { createReadStream, promises as fsPromises } from 'fs';
+import { createReadStream } from 'fs';
 import { join } from 'path';
+import { DataDto } from './data.dto';  // Import the DataDto
 
-const data = require('../data/data.json');
+const data: DataDto[] = require('../data/data.json');  // Type the data array as DataDto[]
 const imageFolder = join(__dirname, '..', 'data');
 
 @Controller()
@@ -26,40 +27,36 @@ export class AppController {
         //     throw new UnauthorizedException('Access token is required');
         // }
         //
-        // if (bcrypt.compareSync(accessToken, this.accessTokenHash)) {
+        // if (!bcrypt.compareSync(accessToken, this.accessTokenHash)) {
         //     throw new UnauthorizedException('Invalid access token');
         // }
 
         const currentDate = new Date();
 
-        let currentObject = null;
-
-        const isWithinInterval = (currentDate, dateFrom, dateTo) => {
-            return currentDate >= dateFrom && currentDate <= dateTo;
+        const isWithinInterval = (currentDate: Date, dateFrom: string, dateTo: string) => {
+            return currentDate >= new Date(dateFrom) && currentDate <= new Date(dateTo);
         };
 
+        // Filter objects within the interval
+        const objectsWithinInterval = data.filter((object) => {
+            return isWithinInterval(currentDate, object.dateFrom, object.dateTo);
+        });
 
-        // Adjust the comparison to include hours and minutes
-        for (const item of data) {
-            const dateFrom = new Date(item.dateFrom);
-            const dateTo = new Date(item.dateTo);
+        if (objectsWithinInterval.length > 0) {
+            // Convert all active objects' images to base64
+            const activeObjectsWithImages = await Promise.all(objectsWithinInterval.map(async (object) => {
+                const { id, coordinates, objectName, imagePath } = object;
 
-            if (isWithinInterval(currentDate, dateFrom, dateTo)) {
-                currentObject = item;
-                break;
-            }
-        }
+                // Read the image file
+                const imageStream = createReadStream(join(imageFolder, imagePath));
+                const imageBase64 = await this.streamToBase64(imageStream);
 
-        if (currentObject !== null) {
-            const { coordinates, objectName, imagePath } = currentObject;
+                return { id, coordinates, objectName, image: imageBase64 };
+            }));
 
-            // Read the image file
-            const imageStream = createReadStream(join(imageFolder, imagePath));
-            const imageBase64 = await this.streamToBase64(imageStream);
-
-            return { coordinates, objectName, image: imageBase64 };
+            return activeObjectsWithImages;
         } else {
-            return { message: "No object found for the current date and time." };
+            return { message: "No objects found for the current date and time." };
         }
     }
 

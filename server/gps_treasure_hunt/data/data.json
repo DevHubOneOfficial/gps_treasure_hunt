@@ -1,7 +1,8 @@
 [
   {
-    "dateFrom": "2024-06-01T14:30:00",
-    "dateTo": "2024-06-08T14:30:00",
+    "id": "1",
+    "dateFrom": "2024-08-01T10:00:00",
+    "dateTo": "2024-08-01T22:00:00",
     "coordinates": {
       "latitude": 42.81866140961947,
       "longitude": 23.224389451062564
@@ -10,8 +11,9 @@
     "imagePath": "images/gatanka1.png"
   },
   {
-    "dateFrom": "2024-06-08T14:30:00",
-    "dateTo": "2024-06-17T07:00:00",
+    "id": "2",
+    "dateFrom": "2024-08-01T10:00:00",
+    "dateTo": "2024-08-01T22:00:00",
     "coordinates": {
       "latitude": 42.81198429571889,
       "longitude": 23.21515681446394
@@ -20,8 +22,9 @@
     "imagePath": "images/gatanka2.png"
   },
   {
-    "dateFrom": "2024-06-17T07:00:00",
-    "dateTo": "2024-06-24T07:00:00",
+    "id": "3",
+    "dateFrom": "2024-08-01T10:00:00",
+    "dateTo": "2024-08-01T22:00:00",
     "coordinates": {
       "latitude": 42.82567522833808,
       "longitude": 23.18149900438928
@@ -30,8 +33,20 @@
     "imagePath": "images/gatanka3.png"
   },
   {
-    "dateFrom": "2024-06-24T07:00:00",
-    "dateTo": "2024-07-01T07:00:00",
+    "id": "4",
+    "dateFrom": "2024-08-01T10:00:00",
+    "dateTo": "2024-08-01T22:00:00",
+    "coordinates": {
+      "latitude": 42.81109600789831,
+      "longitude": 23.203037858505944
+    },
+    "objectName": "Key",
+    "imagePath": "images/gatanka4.png"
+  },
+  {
+    "id": "5",
+    "dateFrom": "2024-08-01T10:00:00",
+    "dateTo": "2024-08-01T22:00:00",
     "coordinates": {
       "latitude": 42.81109600789831,
       "longitude": 23.203037858505944
