@@ -1,57 +1,57 @@
 [
   {
     "id": "1",
-    "dateFrom": "2024-08-01T10:00:00",
-    "dateTo": "2024-08-10T22:00:00",
+    "dateFrom": "2024-08-16T10:00:00",
+    "dateTo": "2024-08-18T22:00:00",
     "coordinates": {
-      "latitude": 42.81866140961947,
-      "longitude": 23.224389451062564
+      "latitude": 42.80849556161503,
+      "longitude": 23.203444365268496
     },
-    "objectName": "Fortress",
+    "objectName": "50years",
     "imagePath": "images/gatanka1.png"
   },
   {
     "id": "2",
-    "dateFrom": "2024-08-01T10:00:00",
-    "dateTo": "2024-08-10T22:00:00",
+    "dateFrom": "2024-08-16T10:00:00",
+    "dateTo": "2024-08-18T22:00:00",
     "coordinates": {
-      "latitude": 42.81198429571889,
-      "longitude": 23.21515681446394
+      "latitude": 42.81023381115865,
+      "longitude": 23.21795517927656
     },
-    "objectName": "Roster",
+    "objectName": "50years",
     "imagePath": "images/gatanka2.png"
   },
   {
     "id": "3",
-    "dateFrom": "2024-08-01T10:00:00",
-    "dateTo": "2024-08-10T22:00:00",
+    "dateFrom": "2024-08-16T10:00:00",
+    "dateTo": "2024-08-18T22:00:00",
     "coordinates": {
-      "latitude": 42.82567522833808,
-      "longitude": 23.18149900438928
+      "latitude": 42.81932419859733,
+      "longitude": 23.22584390859251
     },
-    "objectName": "Sun",
+    "objectName": "50years",
     "imagePath": "images/gatanka3.png"
   },
   {
     "id": "4",
-    "dateFrom": "2024-08-01T10:00:00",
-    "dateTo": "2024-08-10T22:00:00",
+    "dateFrom": "2024-08-16T10:00:00",
+    "dateTo": "2024-08-18T22:00:00",
     "coordinates": {
-      "latitude": 42.81109600789831,
-      "longitude": 23.203037858505944
+      "latitude": 42.808733554275435,
+      "longitude": 23.199024112609628
     },
-    "objectName": "Key",
+    "objectName": "50years",
     "imagePath": "images/gatanka4.png"
   },
   {
     "id": "5",
-    "dateFrom": "2024-08-01T10:00:00",
-    "dateTo": "2024-08-10T22:00:00",
+    "dateFrom": "2024-08-16T10:00:00",
+    "dateTo": "2024-08-18T22:00:00",
     "coordinates": {
-      "latitude": 42.6295993370235,
-      "longitude": 23.383041320045223
+      "latitude": 42.83066338692013,
+      "longitude": 23.19289765589009
     },
-    "objectName": "Key",
-    "imagePath": "images/gatanka4.png"
+    "objectName": "50years",
+    "imagePath": "images/gatanka5.png"
   }
 ]
