@@ -1,73 +1,197 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# GPS Treasure Hunt Server
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+Small NestJS API for a GPS treasure hunt. The server exposes one endpoint:
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+- `GET /coordinates`
 
-## Description
+It reads treasure entries from `data/data.json`, filters them by the current server time, loads the referenced image files from `data/images/`, and returns the active entries as JSON.
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## Project Layout
 
-## Installation
+- `src/` application code
+- `data/data.json` treasure definitions
+- `data/images/` clue images returned by the API
+- `Dockerfile` production image build
+- `docker-compose.yml` local or server deployment
 
-```bash
-$ npm install
+## Endpoint
+
+After deployment, the API is available at:
+
+```text
+http://<server-ip>:3040/coordinates
 ```
 
-## Running the app
+The compose file maps host port `3040` to container port `3000`.
+
+## Deploy On An Ubuntu EC2 Instance
+
+These steps assume:
+
+- Ubuntu EC2 instance
+- SSH access to the instance
+- Git installed or installable
+- AWS security group allows inbound TCP `3040` from the clients that need access
+
+### 1. Connect To The EC2 Instance
 
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+ssh -i /path/to/your-key.pem ubuntu@<your-ec2-public-ip>
 ```
 
-## Test
+### 2. Install Git
 
 ```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+sudo apt update
+sudo apt install -y git
 ```
 
-## Support
+### 3. Install Docker Engine And Docker Compose Plugin
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+The commands below follow Docker's official Ubuntu installation instructions using Docker's `apt` repository.
 
-## Stay in touch
+```bash
+sudo apt update
+sudo apt install -y ca-certificates curl
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+sudo tee /etc/apt/sources.list.d/docker.sources <<EOF
+Types: deb
+URIs: https://download.docker.com/linux/ubuntu
+Suites: $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}")
+Components: stable
+Architectures: $(dpkg --print-architecture)
+Signed-By: /etc/apt/keyrings/docker.asc
+EOF
+sudo apt update
+sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+```
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+Verify Docker:
 
-## License
+```bash
+sudo docker run hello-world
+sudo systemctl status docker
+docker compose version
+```
 
-Nest is [MIT licensed](LICENSE).
+Optional: allow the `ubuntu` user to run Docker without `sudo`.
+
+```bash
+sudo usermod -aG docker $USER
+newgrp docker
+```
+
+### 4. Clone The Repository
+
+```bash
+git clone <your-repo-url>
+cd gps_treasure_hunt/server/gps_treasure_hunt
+```
+
+If the repo directory name differs, adjust the `cd` command accordingly.
+
+### 5. Start The Server
+
+Build the image and start the container:
+
+```bash
+docker compose up --build -d
+```
+
+Check that it is running:
+
+```bash
+docker compose ps
+docker compose logs --tail=100
+```
+
+### 6. Test The Endpoint
+
+From the EC2 instance:
+
+```bash
+curl http://localhost:3040/coordinates
+```
+
+From your local machine:
+
+```bash
+curl http://<your-ec2-public-ip>:3040/coordinates
+```
+
+If you cannot reach it publicly, check:
+
+- AWS security group inbound rule for TCP `3040`
+- EC2 instance firewall rules if `ufw` is enabled
+- that the container is running with `docker compose ps`
+
+## Updating The Server After A Git Pull
+
+### Code changes
+
+If you changed files under `src/`, rebuild and restart:
+
+```bash
+git pull
+docker compose up --build -d
+```
+
+### Data changes only
+
+The compose file mounts `./data` into the container as a volume, so changes to `data/data.json` or `data/images/` do not require rebuilding the image.
+
+After pulling new data changes:
+
+```bash
+git pull
+docker compose restart
+```
+
+This restart is still needed because the app loads `data.json` on process startup.
+
+## Common Commands
+
+Start in background:
+
+```bash
+docker compose up -d
+```
+
+Rebuild and restart:
+
+```bash
+docker compose up --build -d
+```
+
+Restart without rebuild:
+
+```bash
+docker compose restart
+```
+
+View logs:
+
+```bash
+docker compose logs -f
+```
+
+Stop:
+
+```bash
+docker compose down
+```
+
+## Notes
+
+- The application currently listens on port `3000` inside the container.
+- The host exposes it on port `3040` through `docker-compose.yml`.
+- The `/coordinates` response depends on the date ranges configured in `data/data.json`.
+- If no entry is active for the current date, the API returns a message instead of coordinates.
+
+## Source For Docker Install Commands
+
+Official Docker documentation for Ubuntu:
+
+- https://docs.docker.com/engine/install/ubuntu/
