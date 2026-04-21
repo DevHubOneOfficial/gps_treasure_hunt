@@ -4,8 +4,8 @@
     "dateFrom": "2026-04-01T05:00:00",
     "dateTo": "2026-04-22T20:59:00",
     "coordinates": {
-      "latitude": 42.62602641371135,
-      "longitude": 23.384080721512806
+      "latitude": 42.81123011856476, 
+      "longitude": 23.200708756569863
     },
     "objectName": "KostinbrodLogo",
     "imagePath": "images/gatanka1.png"
@@ -15,8 +15,8 @@
     "dateFrom": "2026-04-01T05:00:00",
     "dateTo": "2026-04-22T20:59:00",
     "coordinates": {
-      "latitude": 42.81165231689472, 
-      "longitude": 23.20189830369262
+      "latitude": 42.80866633487791,  
+      "longitude": 23.20337483135478
     },
     "objectName": "KostinbrodLogo",
     "imagePath": "images/gatanka2.png"
@@ -26,8 +26,8 @@
     "dateFrom": "2026-04-01T05:00:00",
     "dateTo": "2026-04-22T20:59:00",
     "coordinates": {
-      "latitude": 42.81932419859733,
-      "longitude": 23.22584390859251
+      "latitude": 42.810490734098366, 
+      "longitude": 23.20193482841163
     },
     "objectName": "KostinbrodLogo",
     "imagePath": "images/gatanka3.png"
@@ -37,8 +37,8 @@
     "dateFrom": "2026-04-01T05:00:00",
     "dateTo": "2026-04-22T20:59:00",
     "coordinates": {
-      "latitude": 42.808733554275435,
-      "longitude": 23.199024112609628
+      "latitude": 42.83033599720189, 
+      "longitude": 23.183849303121853
     },
     "objectName": "KostinbrodLogo",
     "imagePath": "images/gatanka4.png"
@@ -48,8 +48,8 @@
     "dateFrom": "2026-04-01T05:00:00",
     "dateTo": "2026-04-22T20:59:00",
     "coordinates": {
-      "latitude": 42.830663641734525,
-      "longitude": 23.19289884441881
+      "latitude": 42.81868976781401, 
+      "longitude": 23.224299202156505
     },
     "objectName": "KostinbrodLogo",
     "imagePath": "images/gatanka5.png"
